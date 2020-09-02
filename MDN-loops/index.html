@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Loops!</title>
+
+	<style>
+		p {
+			color: purple;
+			margin: 0.5em 0;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+	</style>
+
+	<link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+	<section class="preview" id="section1"></section>
+	<section class="preview" id="section2"></section>
+	<section class="preview" id="section3"></section>
+
+</body>
+
+<script>
+	/* TASK 1: start by creating a simple loop that goes through all the items in the provided myArray 
+			and prints them out on the screen inside list items (i.e., <li> elements), 
+			which are appended to the provided list.*/
+
+	const myArray = ['tomatoes', 'chick peas', 'onions', 'rice', 'black beans'];
+	let list = document.createElement('ul');
+	for (let i = 0; i < myArray.length; i++) {
+		let listItem = document.createElement('li');
+		listItem.appendChild(document.createTextNode(myArray[i]));
+		list.appendChild(listItem);
+	}
+	const section1 = document.querySelector('#section1');
+	section1.appendChild(list);
+
+
+	/* TASK 2: write a program that, given a name, searches an array of objects containing names and phone numbers (phonebook) 
+			and, if it finds the name, outputs the name and phone number into the paragraph (para) 
+			and then exits the loop before it has run its course. */
+
+	let name = 'Mustafa';
+	let para = document.createElement('p');
+
+	let phonebook = [
+		{ name: 'Chris', number: '1549' },
+		{ name: 'Li Kang', number: '9634' },
+		{ name: 'Anne', number: '9065' },
+		{ name: 'Francesca', number: '3001' },
+		{ name: 'Mustafa', number: '6888' },
+		{ name: 'Tina', number: '4312' },
+		{ name: 'Bert', number: '7780' },
+		{ name: 'Jada', number: '2282' },
+	]
+	let i = 0;
+	while (i < phonebook.length) {
+		if (phonebook[i].name === name) {
+			para.textContent = phonebook[i].name + "'s number: " + phonebook[i].number;
+			break;
+		} else {
+			para.textContent === name + " not found."
+		}
+		i++
+	}
+
+	const section2 = document.querySelector('#section2');
+	section2.appendChild(para);
+
+
+	/* TASK 3: use a loop to go through the numbers 2 to 500 backwards (1 is not counted as a prime number), 
+			and run the provided isPrime() function on them. For each number that isn't a prime number, 
+			continue on to the next loop iteration. For each one that is a prime number, 
+			add it to the paragraph's textContent along with some kind of separator.*/
+
+	let para2 = document.createElement('p');
+
+	function isPrime(num) {
+		for (let i = 2; i < num; i++) {
+			if (num % i === 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	let y = 500;
+	do {
+		if (isPrime(y)) {
+			if (para2.textContent === "") {
+				para2.textContent = y;
+			} else {
+				para2.textContent += " | " + y;
+			}
+		}
+		y--;
+	} while (y > 1);
+
+	const section = document.querySelector('#section3');
+	section3.appendChild(para2);
+</script>
+
+</html>
